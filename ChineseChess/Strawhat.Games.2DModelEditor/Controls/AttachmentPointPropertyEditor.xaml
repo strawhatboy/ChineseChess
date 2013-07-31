@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="Strawhat.Games._2DModelEditor.Controls.AttachmentPointPropertyEditor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="2" />
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <ListBox Grid.Column="0" x:Name="listBoxAttachmentPoints" ItemsSource="{Binding Path=GameModelFrame.AttachmentPoints, Mode=TwoWay}" SelectedItem="{Binding Path=SelectedAttachmentPoint, Mode=TwoWay}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Grid Grid.Column="1" Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25" />
+                <RowDefinition Height="25" />
+                <RowDefinition Height="25" />
+                <RowDefinition Height="25" />
+                <RowDefinition Height="25" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="25" />
+                <ColumnDefinition Width="120" />
+                <ColumnDefinition Width="25" />
+                <ColumnDefinition Width="120" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Attached Position:" Grid.ColumnSpan="999"/>
+            <TextBlock Text="X:" Grid.Row="1" />
+            <TextBox Text="{Binding Path=SelectedAttachmentPoint.AttachPosition.X, Mode=TwoWay}" Grid.Row="1" Grid.Column="1" />
+            <TextBlock Text="Y:" Grid.Row="1" Grid.Column="2" />
+            <TextBox Text="{Binding Path=SelectedAttachmentPoint.AttachPosition.Y, Mode=TwoWay}" Grid.Row="1" Grid.Column="3" />
+            
+            <TextBlock Text="Attached Angle:" Grid.ColumnSpan="2" Grid.Row="3" />
+            <TextBox Text="{Binding Path=SelectedAttachmentPoint.AttachAngle, Mode=TwoWay}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" />
+        </Grid>
+    </Grid>
+</UserControl>

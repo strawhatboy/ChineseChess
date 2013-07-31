@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="Strawhat.Games._2DModelEditor.Controls.FrameGeneralPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="500">
+    <UserControl.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="2" />
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0">Occupied Frames Count:</TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="0">Pixel Width:</TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="0">Pixel Height:</TextBlock>
+        <TextBlock Grid.Row="4" Grid.Column="0">DpiX:</TextBlock>
+        <TextBlock Grid.Row="5" Grid.Column="0">DpiY:</TextBlock>
+        <TextBlock Grid.Row="6" Grid.Column="0">Format:</TextBlock>
+
+        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=GameModelFrame.OccupiedFrameCount}" TextChanged="TextBox_TextChanged" />
+        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Path=GameModelFrame.Image.PixelWidth}" />
+        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Path=GameModelFrame.Image.PixelHeight}" />
+        <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding Path=GameModelFrame.Image.DpiX}" />
+        <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding Path=GameModelFrame.Image.DpiY}" />
+        <TextBlock Grid.Row="6" Grid.Column="1" Text="{Binding Path=GameModelFrame.Image.Format}" />
+    </Grid>
+</UserControl>

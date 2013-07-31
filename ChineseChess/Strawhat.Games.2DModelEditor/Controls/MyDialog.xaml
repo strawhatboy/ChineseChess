@@ -1,0 +1,28 @@
+﻿<Window x:Class="Strawhat.Games._2DModelEditor.Controls.MyDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:thisConverters="clr-namespace:Strawhat.Games._2DModelEditor.Converters"
+        Title="MyDialog" Height="300" Width="300">
+    <Window.Resources>
+        <Style x:Key="CommandButtonStyle" TargetType="Button">
+            <Setter Property="DockPanel.Dock" Value="Right" />
+            <Setter Property="Width" Value="80" />
+            <Setter Property="Margin" Value="2" />
+        </Style>
+        <thisConverters:VisibilityConverter x:Key="visibilityConverter" />
+    </Window.Resources>
+    <Grid x:Name="mainContainer">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Row="1">
+            <Button Style="{StaticResource ResourceKey=CommandButtonStyle}" Content="Cancel" Command="{Binding Path=CancelCommand}" Visibility="{Binding Path=CanCancel, Converter={StaticResource ResourceKey=visibilityConverter}}" />
+            <Button Style="{StaticResource ResourceKey=CommandButtonStyle}" Content="No" Command="{Binding Path=NoCommand}" Visibility="{Binding Path=CanNo, Converter={StaticResource ResourceKey=visibilityConverter}}" />
+            <Button Style="{StaticResource ResourceKey=CommandButtonStyle}" Content="Yes" Command="{Binding Path=YesCommand}" Visibility="{Binding Path=CanYes, Converter={StaticResource ResourceKey=visibilityConverter}}" />
+            <Button Style="{StaticResource ResourceKey=CommandButtonStyle}" Content="OK" Command="{Binding Path=OKCommand}" Visibility="{Binding Path=CanOK, Converter={StaticResource ResourceKey=visibilityConverter}}" />
+            <TextBlock DockPanel.Dock="Right" />
+        </DockPanel>
+        
+    </Grid>
+</Window>

@@ -1,0 +1,25 @@
+﻿<Window x:Class="Strawhat.ChineseChess.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Canvas>
+            <TextBlock FontSize="90" Foreground="Red" >
+                <TextBlock.Effect>
+                    <DropShadowEffect Color="Blue" ShadowDepth="0"  />
+                    <!--DropShadowBitmapEffect Color="Blue" ShadowDepth="0" Softness="0.2"  /-->
+                    <!--OuterGlowBitmapEffect GlowColor="Blue" GlowSize="10"  /-->
+                </TextBlock.Effect>
+                ffsdf
+            </TextBlock>
+            <TextBlock FontSize="90" Foreground="Red" Canvas.Left="10" Canvas.Top="10" >
+                <TextBlock.Effect>
+                    <DropShadowEffect Color="Blue" ShadowDepth="0"  />
+                    <!--DropShadowBitmapEffect Color="Blue" ShadowDepth="0" Softness="0.2"  /-->
+                    <!--OuterGlowBitmapEffect GlowColor="Blue" GlowSize="10"  /-->
+                </TextBlock.Effect>
+                ffsdf
+            </TextBlock>
+        </Canvas>
+    </Grid>
+</Window>

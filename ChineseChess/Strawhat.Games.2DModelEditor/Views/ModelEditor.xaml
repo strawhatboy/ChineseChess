@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="Strawhat.Games._2DModelEditor.Views.ModelEditor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:this="clr-namespace:Strawhat.Games._2DModelEditor.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" MinWidth="150" MaxWidth="500" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <this:ModelHierarchy x:Name="modelHierarchy" Grid.Row="0" Grid.Column="0" MetadataSelected="modelHierarchy_MetadataSelected" 
+                             FramesSelected="modelHierarchy_FramesSelected" AngleSelected="modelHierarchy_AngleSelected"/>
+        <GridSplitter Width="5" Grid.Column="1" ShowsPreview="True" HorizontalAlignment="Center" VerticalAlignment="Stretch" />
+        <Grid x:Name="editPane" Grid.Column="2" />
+    </Grid>
+</UserControl>
