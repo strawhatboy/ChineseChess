@@ -41,6 +41,10 @@ namespace Strawhat.Games.Utilities
 
         public void ExtractPackage(string pkgFilePath, string destinationPath)
         {
+            if (!File.Exists(pkgFilePath))
+            {
+                throw new InvalidOperationException(string.Format("There is no such pkg file {0} !", pkgFilePath));
+            }
             //throw new NotImplementedException();
             using (var zip = ZipPackage.Open(pkgFilePath, FileMode.Open))
             {

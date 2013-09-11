@@ -5,154 +5,156 @@
 	Height="540"
 	Width="960"
 	WindowStartupLocation="CenterScreen">
-	<Window.InputBindings>
-		<KeyBinding
+    <Window.InputBindings>
+        <KeyBinding
 			Modifiers="Control"
 			Key="N"
 			Command="{Binding Path=NewFileCommand}" />
-		<KeyBinding
+        <KeyBinding
 			Modifiers="Control"
 			Key="O"
 			Command="{Binding Path=OpenFileCommand}" />
-		<KeyBinding
+        <KeyBinding
 			Modifiers="Control"
 			Key="S"
 			Command="{Binding Path=SaveFileCommand}" />
-		<KeyBinding
+        <KeyBinding
 			Modifiers="Control"
 			Key="Z"
 			Command="{Binding Path=UndoCommand}" />
-		<KeyBinding
+        <KeyBinding
 			Modifiers="Control"
 			Key="Y"
 			Command="{Binding Path=RedoCommand}" />
-		<KeyBinding
+        <KeyBinding
 			Modifiers="Control"
 			Key="X"
 			Command="{Binding Path=CutCommand}" />
-		<KeyBinding
+        <KeyBinding
 			Modifiers="Control"
 			Key="C"
 			Command="{Binding Path=CopyCommand}" />
-		<KeyBinding
+        <KeyBinding
 			Modifiers="Control"
 			Key="V"
 			Command="{Binding Path=PasteCommand}" />
-		<KeyBinding
+        <KeyBinding
 			Key="Del"
 			Command="{Binding Path=DeleteCommand}" />
-		<KeyBinding
+        <KeyBinding
 			Modifiers="Control"
 			Key="F5"
 			Command="{Binding Path=ModelPreviewCommand}" />
-		<!--KeyBinding Modifiers="Control" Key="A" Command="{Binding Path=SelectAllCommand}" /-->
-	</Window.InputBindings>
-	<Grid>
-		<DockPanel>
-			<Menu
+        <!--KeyBinding Modifiers="Control" Key="A" Command="{Binding Path=SelectAllCommand}" /-->
+    </Window.InputBindings>
+    <Grid>
+        <DockPanel>
+            <Menu
 				x:Name="MenuControl"
 				VerticalAlignment="Center"
 				DockPanel.Dock="Top">
-				<MenuItem
+                <MenuItem
 					Header="_FILE">
-					<MenuItem
+                    <MenuItem
 						Header="_New Model"
 						InputGestureText="Ctrl+N"
 						Command="{Binding Path=NewFileCommand}"></MenuItem>
-					<MenuItem
+                    <MenuItem
 						Header="_Open Model"
 						InputGestureText="Ctrl+O"
 						Command="{Binding Path=OpenFileCommand}"></MenuItem>
-					<Separator />
-					<MenuItem
+                    <Separator />
+                    <MenuItem
 						x:Name="MENUITEM_FILE_CLOSE"
 						Header="_Close"
 						Command="{Binding Path=CloseFileCommand}"></MenuItem>
-					<MenuItem
+                    <MenuItem
 						x:Name="MENUITEM_FILE_CLOSEALL"
 						Header="Close All"
 						Command="{Binding Path=CloseAllCommand}"></MenuItem>
-					<Separator />
-					<MenuItem
+                    <Separator />
+                    <MenuItem
 						x:Name="MENUITEM_FILE_SAVE"
 						Header="_Save"
 						InputGestureText="Ctrl+S"
 						Command="{Binding Path=SaveFileCommand}"></MenuItem>
-					<MenuItem
+                    <MenuItem
 						x:Name="MENUITEM_FILE_SAVEAS"
 						Header="Save _As"
 						Command="{Binding Path=SaveAsCommand}"></MenuItem>
-					<MenuItem
+                    <MenuItem
 						x:Name="MENUITEM_FILE_SAVEALL"
 						Header="Save All"
 						InputGestureText="Ctrl+Shift+S"
 						Command="{Binding Path=SaveAllCommand}"></MenuItem>
-					<Separator />
-					<MenuItem
+                    <Separator />
+                    <MenuItem
 						x:Name="MENUITEM_FILE_EXIT"
 						Header="Exit"
 						InputGestureText="Alt+F4"></MenuItem>
-				</MenuItem>
-				<MenuItem
+                </MenuItem>
+                <MenuItem
 					x:Name="MENUITEM_EDIT"
 					Header="_EDIT">
-					<!--MenuItem Header="_Undo" InputGestureText="Ctrl+Z" Command="{Binding Path=UndoCommand}"></MenuItem-->
-					<!--MenuItem Header="_Redo" InputGestureText="Ctrl+Y" Command="{Binding Path=RedoCommand}"></MenuItem-->
-					<!--Separator /-->
-					<MenuItem
+                    <!--MenuItem Header="_Undo" InputGestureText="Ctrl+Z" Command="{Binding Path=UndoCommand}"></MenuItem-->
+                    <!--MenuItem Header="_Redo" InputGestureText="Ctrl+Y" Command="{Binding Path=RedoCommand}"></MenuItem-->
+                    <!--Separator /-->
+                    <MenuItem
 						x:Name="MENUITEM_EDIT_CUT"
 						Header="Cu_t"
 						InputGestureText="Ctrl+X"
 						Command="{Binding Path=CutCommand}"></MenuItem>
-					<MenuItem
+                    <MenuItem
 						x:Name="MENUITEM_EDIT_COPY"
 						Header="_Copy"
 						InputGestureText="Ctrl+C"
 						Command="{Binding Path=CopyCommand}"></MenuItem>
-					<MenuItem
+                    <MenuItem
 						x:Name="MENUITEM_EDIT_PASTE"
 						Header="_Paste"
 						InputGestureText="Ctrl+V"
 						Command="{Binding Path=PasteCommand}"></MenuItem>
-					<MenuItem
+                    <MenuItem
 						x:Name="MENUITEM_EDIT_DELETE"
 						Header="_Delete"
 						InputGestureText="Del"
 						Command="{Binding Path=DeleteCommand}"></MenuItem>
-					<!--Separator /-->
-					<!--MenuItem x:Name="MENUITEM_EDIT_SELECTALL" Header="Select _All" InputGestureText="Ctrl+A" Command="{Binding Path=SelectAllCommand}"></MenuItem-->
-				</MenuItem>
-				<MenuItem
+                    <!--Separator /-->
+                    <!--MenuItem x:Name="MENUITEM_EDIT_SELECTALL" Header="Select _All" InputGestureText="Ctrl+A" Command="{Binding Path=SelectAllCommand}"></MenuItem-->
+                </MenuItem>
+                <MenuItem
 					x:Name="MENUITEM_TOOLS"
 					Header="_TOOLS">
-					<MenuItem
+                    <MenuItem
 						x:Name="MENUITEM_TOOLS_MODEL_PREVIEW"
 						Header="Model _Preview"
 						InputGestureText="Ctrl+F5"
 						Command="{Binding Path=ModelPreviewCommand}"></MenuItem>
-				</MenuItem>
-				<MenuItem
+                    <Separator />
+                    <MenuItem x:Name="MENUITEM_TOOLS_OPTIONS" Header="Options" Command="{Binding Path=OptionsCommand}"></MenuItem>
+                </MenuItem>
+                <MenuItem
 					x:Name="MENUITEM_HELP"
 					Header="_HELP"></MenuItem>
-			</Menu>
-			<ToolBarTray
+            </Menu>
+            <ToolBarTray
 				DockPanel.Dock="Top">
-				<ToolBar
+                <ToolBar
 					VerticalAlignment="Center">
-					<Button>OPEN</Button>
-				</ToolBar>
-			</ToolBarTray>
-			<StatusBar
+                    <Button>OPEN</Button>
+                </ToolBar>
+            </ToolBarTray>
+            <StatusBar
 				DockPanel.Dock="Bottom"
 				Height="25">
-				<TextBlock
+                <TextBlock
 					Height="23"
 					Name="statusTextBlock"
 					Text="Ready" />
-			</StatusBar>
-			<TabControl
+            </StatusBar>
+            <TabControl
 				x:Name="MainTabControl"
 				SelectedItem="{Binding Path=SelectedTabItem, Mode=TwoWay}" />
-		</DockPanel>
-	</Grid>
+        </DockPanel>
+    </Grid>
 </Window>

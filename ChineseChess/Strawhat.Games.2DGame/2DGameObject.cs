@@ -103,9 +103,12 @@ namespace Strawhat.Games._2DGame
 
         public virtual void PlayAnimation(string animation)
         {
-            currentAnimation = this.GameModel.GetAnimationsByAngle(this.FacingAngle).FirstOrDefault(a => string.Compare(a.Name, animation, true) == 0);
-            this.currentAnimationIndex = 0;
-            this.currentTicks = 0;
+            if (this.GameModel != null)
+            {
+                currentAnimation = this.GameModel.GetAnimationsByAngle(this.FacingAngle).FirstOrDefault(a => string.Compare(a.Name, animation, true) == 0);
+                this.currentAnimationIndex = 0;
+                this.currentTicks = 0;
+            }
         }
 
         void timer_Tick(object sender, EventArgs e)
@@ -183,7 +186,7 @@ namespace Strawhat.Games._2DGame
         public void Dispose()
         {
             //throw new NotImplementedException();
-            _2DGameTimer.Timer.Tick -= timer_Tick;
+            //_2DGameTimer.Timer.Tick -= timer_Tick;
             _2DGameTimer.Tick -= _2DGameTimer_Tick;
         }
     }

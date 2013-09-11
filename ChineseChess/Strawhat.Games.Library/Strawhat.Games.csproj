@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GameBase.cs" />
+    <Compile Include="GameController.cs" />
     <Compile Include="GameObject.cs" />
     <Compile Include="GameStatus.cs" />
     <Compile Include="GameTimer.cs" />

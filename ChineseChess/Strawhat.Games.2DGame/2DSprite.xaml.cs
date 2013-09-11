@@ -18,7 +18,7 @@ namespace Strawhat.Games._2DGame
     /// <summary>
     /// Interaction logic for _2DSpirit.xaml
     /// </summary>
-    public partial class _2DSpirit : UserControl, INotifyPropertyChanged
+    public partial class _2DSprite : UserControl, INotifyPropertyChanged
     {
         private BitmapImage _Texture;
         public BitmapImage Texture
@@ -73,7 +73,7 @@ namespace Strawhat.Games._2DGame
             this.SetValue(Canvas.TopProperty, location.Y);
         }
 
-        public _2DSpirit()
+        public _2DSprite()
         {
             InitializeComponent();
             this.DataContext = this;

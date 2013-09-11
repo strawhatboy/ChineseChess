@@ -1,22 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <PropertyGroup>
-    <ApplicationIcon>2DModelEditor_Icon.ico</ApplicationIcon>
-  </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5B01631A-6D76-4302-91D0-62096CDB6425}</ProjectGuid>
+    <ProjectGuid>{276D8C58-CB88-4214-9867-3B957A3CF5FC}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Strawhat.Games._2DModelEditor</RootNamespace>
-    <AssemblyName>Strawhat.Games.2DModelEditor</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <RootNamespace>FPSTest</RootNamespace>
+    <AssemblyName>FPSTest</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -39,7 +35,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -58,77 +53,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Controller\BaseController.cs" />
-    <Compile Include="Controller\CloseFileCommandController.cs" />
-    <Compile Include="Controller\CutCommandController.cs" />
-    <Compile Include="Controller\ModelPreViewCommandController.cs" />
-    <Compile Include="Controller\NewFileCommandController.cs" />
-    <Compile Include="Controller\OpenFileCommandController.cs" />
-    <Compile Include="Controller\OptionsCommandController.cs" />
-    <Compile Include="Controller\SaveFileCommandController.cs" />
-    <Compile Include="Controller\SelectedObjectChangedController.cs" />
-    <Compile Include="Controls\AttachmentPointPropertyEditor.xaml.cs">
-      <DependentUpon>AttachmentPointPropertyEditor.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ClosableTabItem.cs" />
-    <Compile Include="Controls\FrameGeneralPage.xaml.cs">
-      <DependentUpon>FrameGeneralPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ModelMetadataEditor.xaml.cs">
-      <DependentUpon>ModelMetadataEditor.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\MyDialog.xaml.cs">
-      <DependentUpon>MyDialog.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Converters\VisibilityConverter.cs" />
-    <Compile Include="ExtensionMethods\MenuItemExtension.cs" />
-    <Compile Include="ExtensionMethods\TreeViewItemExtension.cs" />
-    <Compile Include="Models\EditorOptions.cs" />
-    <Compile Include="Models\GlobalSession.cs" />
-    <Compile Include="Models\MainWindowTabItemContext.cs" />
-    <Compile Include="Models\MyClipboard.cs" />
-    <Compile Include="Models\SelectedObject.cs" />
-    <Compile Include="Models\StringResources.cs" />
-    <Compile Include="Views\MenuAndToolbar.xaml.cs">
-      <DependentUpon>MenuAndToolbar.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ModelEditor.xaml.cs">
-      <DependentUpon>ModelEditor.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ModelAnimationsEditor.xaml.cs">
-      <DependentUpon>ModelAnimationsEditor.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ModelHierarchy.xaml.cs">
-      <DependentUpon>ModelHierarchy.xaml</DependentUpon>
-    </Compile>
-    <Page Include="ClosableTabItem.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\AnimationPlayer.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\AttachmentPointPropertyEditor.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\FrameGeneralPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\FramesContainer.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\ModelMetadataEditor.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\MyDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -137,32 +61,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Controls\AnimationPlayer.xaml.cs">
-      <DependentUpon>AnimationPlayer.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\FramesContainer.xaml.cs">
-      <DependentUpon>FramesContainer.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\MenuAndToolbar.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ModelEditor.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ModelAnimationsEditor.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ModelHierarchy.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -204,16 +106,6 @@
       <Project>{5ba7da2d-7f80-473a-a9e5-c03b745d91da}</Project>
       <Name>Strawhat.Games.Utilities</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <None Include="SplashScreen.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <SplashScreen Include="2DModelEditor_SplashScreen.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="2DModelEditor_Icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

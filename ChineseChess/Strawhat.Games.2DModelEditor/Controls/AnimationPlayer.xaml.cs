@@ -23,8 +23,8 @@ namespace Strawhat.Games._2DModelEditor.Controls
     /// </summary>
     public partial class AnimationPlayer : UserControl, INotifyPropertyChanged
     {
-        private _2DSpirit _GameSpirit;
-        public _2DSpirit GameSpirit
+        private _2DSprite _GameSpirit;
+        public _2DSprite GameSpirit
         {
             private set
             {
@@ -189,7 +189,7 @@ namespace Strawhat.Games._2DModelEditor.Controls
             this.IsPaused = this.GameSpirit.GameObject.IsAnimationPaused;
         }
 
-        private void SetSpirit(_2DSpirit value)
+        private void SetSpirit(_2DSprite value)
         {
             //throw new NotImplementedException();
             this.GameCanvas.Children.Add(value);
@@ -226,21 +226,21 @@ namespace Strawhat.Games._2DModelEditor.Controls
             }
         }
 
-        public AnimationPlayer(_2DSpirit spirit) : this()
+        public AnimationPlayer(_2DSprite spirit) : this()
         {
             this.GameSpirit = spirit;
         }
 
         public AnimationPlayer(_2DGameObject _2dGameObject)
         {
-            _2DSpirit spirit = new _2DSpirit();
+            _2DSprite spirit = new _2DSprite();
             spirit.GameObject = _2dGameObject;
             this.GameSpirit = spirit;
         }
 
         public AnimationPlayer(_2DGameModel model) : this()
         {
-            _2DSpirit spirit = new _2DSpirit();
+            _2DSprite spirit = new _2DSprite();
             spirit.GameObject = new _2DGameObject(model);
             spirit.GameObject.FrameIndexChanged+= 
             	a => {

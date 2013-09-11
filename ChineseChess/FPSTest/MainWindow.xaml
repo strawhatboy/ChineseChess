@@ -1,0 +1,15 @@
+﻿<Window x:Class="FPSTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:_2DGame ="clr-namespace:Strawhat.Games._2DGame;assembly=Strawhat.Games.2DGame"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBlock Name="FPS" ></TextBlock>
+        <TextBlock Name="UpdateSeconds" Grid.Row="1"></TextBlock>
+        <_2DGame:StrawhatGameStudioSplashScene />
+    </Grid>
+</Window>

@@ -50,31 +50,36 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="2DGameController.cs" />
     <Compile Include="2DGameMap.cs" />
     <Compile Include="2DGameModel.cs" />
     <Compile Include="2DGameModelAttachmentPoint.cs" />
     <Compile Include="2DGameModelFrame.cs" />
     <Compile Include="2DGameObject.cs" />
     <Compile Include="2DGameModelAnimation.cs" />
+    <Compile Include="2DGameResourceManager.cs" />
+    <Compile Include="2DGameScene.cs" />
+    <Compile Include="2DGameSettings.cs" />
     <Compile Include="2DGameTextureHelper.cs" />
     <Compile Include="2DGameTimer.cs" />
-    <Compile Include="2DSpirit.xaml.cs">
-      <DependentUpon>2DSpirit.xaml</DependentUpon>
+    <Compile Include="2DSprite.xaml.cs">
+      <DependentUpon>2DSprite.xaml</DependentUpon>
     </Compile>
+    <Compile Include="I2DGameScene.cs" />
     <Compile Include="Infrastructure\RelayCommand.cs" />
-    <Compile Include="Vector2D.cs" />
-    <Page Include="2DSpirit.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControl1.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Compile Include="UserControl1.xaml.cs">
-      <DependentUpon>UserControl1.xaml</DependentUpon>
-      <SubType>Code</SubType>
+    <Compile Include="StrawhatGameStudioSplashScene.xaml.cs">
+      <DependentUpon>StrawhatGameStudioSplashScene.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Vector2D.cs" />
+    <Compile Include="_2DGameBootstrapper.cs" />
+    <Page Include="2DSprite.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StrawhatGameStudioSplashScene.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -110,6 +115,15 @@
       <Name>Strawhat.Games.Utilities</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\Strawhat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Sounds\HEART.WAV">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

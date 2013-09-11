@@ -9,6 +9,7 @@ using System.Windows;
 
 using Strawhat.Games._2DGame;
 using Strawhat.Games._2DModelEditor.Controls;
+using Strawhat.Games.Utilities;
 
 namespace Strawhat.Games._2DModelEditor.Models
 {

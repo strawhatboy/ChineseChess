@@ -8,7 +8,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 
-namespace Strawhat.Games._2DModelEditor.Models
+namespace Strawhat.Games.Utilities
 {
 	/// <summary>
 	/// Description of FileLogger.
@@ -33,25 +33,25 @@ namespace Strawhat.Games._2DModelEditor.Models
 			}
 		}
 		
-		private FileInfo CheckLogFile()
+		private FileInfo CheckLogFile(string logName = "Log")
 		{
-			string currentDir = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
-			string logFileName = currentDir + Path.DirectorySeparatorChar + "Logs\\Log.log";
-			string logDirName = currentDir + Path.DirectorySeparatorChar + "Logs";
+            string currentDir = GameResourceFile.CURRENT_DIR;
+            string logFileName = string.Format("{0}{1}{2}\\{3}.log", currentDir, Path.DirectorySeparatorChar, StringResources._FOLDERS_LOGS_, logName);
+			string logDirName = string.Format("{0}{1}{2}", currentDir, Path.DirectorySeparatorChar, StringResources._FOLDERS_LOGS_);
 			if (!Directory.Exists(logDirName))
 			{
 				Directory.CreateDirectory(logDirName);
 			}
-			
-			if (!File.Exists(logFileName))
+
+            if (!File.Exists(logFileName))
 			{
 				using (File.Create(logFileName));
 			}
-			
-			FileInfo file = new FileInfo(logFileName);
+
+            FileInfo file = new FileInfo(logFileName);
 			if (file.Length >= 0x300000)
 			{
-				file.CopyTo(string.Format("Logs\\Log{0}.log", DateTime.Now.ToString("MM_dd_yyyy_HH_mm_ss")), true);
+                file.CopyTo(string.Format("{2}\\{0}{1}.log", logName, DateTime.Now.ToString("MM_dd_yyyy_HH_mm_ss"), StringResources._FOLDERS_LOGS_), true);
 				using (var stream = file.OpenWrite())
 				{
 					stream.Write(new byte[]{}, 0, 0);

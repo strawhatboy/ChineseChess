@@ -8,7 +8,7 @@ using System.Windows;
 namespace Strawhat.Games._2DModelEditor.Controller
 {
     [Export(typeof(BaseController))]
-    public class CloseFileCommandController :BaseController
+    public class CloseFileCommandController : BaseController
     {
         public override void OnControl()
         {
@@ -19,7 +19,7 @@ namespace Strawhat.Games._2DModelEditor.Controller
                 var selectedTabItem = mainWindow.SelectedTabItem;
                 if (selectedTabItem != null)
                 {
-                    var context = mainWindow.ContextMapping[mainWindow.SelectedTabItem];
+                    var context = mainWindow.ContextMapping[selectedTabItem];
                     MessageBoxResult result = default(MessageBoxResult);
                     if (context.IsEditted)
                     {
@@ -38,7 +38,13 @@ namespace Strawhat.Games._2DModelEditor.Controller
                     }
 
                     if (result != MessageBoxResult.Cancel)
-                        mainWindow.MainTabControl.Items.Remove(mainWindow.SelectedTabItem);
+                    {
+                        // Remove context
+                        mainWindow.ContextMapping.Remove(selectedTabItem);
+
+                        // Remove tabpage
+                        mainWindow.MainTabControl.Items.Remove(selectedTabItem);
+                    }
                 }
 
                 mainWindow.SetCloseAndCloseAllMenuItemAvailability();

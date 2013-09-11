@@ -96,7 +96,7 @@ namespace Strawhat.Games._2DGame
         /// <summary>
         /// Metadata file utility.
         /// </summary>
-        private static GameConfigFile<_2DGameModel> config = new GameConfigFile<_2DGameModel>();
+        private static GameConfigFile<_2DGameModel> config = new GameConfigFile<_2DGameModel>(false);
 
         public _2DGameModel()
         {
@@ -223,7 +223,7 @@ namespace Strawhat.Games._2DGame
             return root.ToString(SaveOptions.None);
         }
 
-        public static _2DGameModel LoadFromFile(string filePath)
+        public static _2DGameModel LoadFromFile(string filePath, bool cleanTempFile = false)
         {
             _2DGameModel result = new _2DGameModel();
             string tempDirectoryPath = GameResourceFile.ExtractResourceFile(filePath);
@@ -367,6 +367,10 @@ namespace Strawhat.Games._2DGame
             }
 
             result.Details = details;
+
+            //Clean temp files
+            if (cleanTempFile)
+                GameResourceFile.CleanAllTempFiles();
 
             return result;
         }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
@@ -12,7 +13,20 @@ namespace Strawhat.Games.Utilities
 {
     public class GameConfigFile
     {
+        private bool _IsBinarySerialization;
+
         public object ConfigEntity { set; get; }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="isBinarySerialization">Set to false to use XML serialization</param>
+        public GameConfigFile(bool isBinarySerialization)
+        {
+            this._IsBinarySerialization = isBinarySerialization;
+        }
+
+        public GameConfigFile() : this(true) { }
 
         /// <summary>
         /// Save the ConfigEntity to a xml file.
@@ -28,15 +42,27 @@ namespace Strawhat.Games.Utilities
 
             try
             {
-                XmlSerializer serializer = new XmlSerializer(ConfigEntity.GetType());
                 var dirPath = Path.GetDirectoryName(filePath);
+
                 if (!Directory.Exists(dirPath))
                 {
                     Directory.CreateDirectory(dirPath);
                 }
+
                 using (var stream = File.Open(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite))
                 {
-                    serializer.Serialize(stream, this.ConfigEntity);
+                    if (!this._IsBinarySerialization)
+                    {
+                        // Xml Serialization
+                        XmlSerializer serializer = new XmlSerializer(ConfigEntity.GetType());
+                        serializer.Serialize(stream, this.ConfigEntity);
+                    }
+                    else
+                    {
+                        // Binary Serialization
+                        BinaryFormatter formatter = new BinaryFormatter();
+                        formatter.Serialize(stream, this.ConfigEntity);
+                    }
                 }
             }
             catch (Exception e)
@@ -63,10 +89,19 @@ namespace Strawhat.Games.Utilities
 
             try
             {
-                XmlSerializer serializer = new XmlSerializer(typeof(T));
+                
                 using (var stream = File.Open(filePath, FileMode.Open, FileAccess.Read, FileShare.Read))
                 {
-                    this.ConfigEntity = serializer.Deserialize(stream);
+                    if (!this._IsBinarySerialization)
+                    {
+                        XmlSerializer serializer = new XmlSerializer(typeof(T));
+                        this.ConfigEntity = serializer.Deserialize(stream);
+                    }
+                    else
+                    {
+                        BinaryFormatter formatter = new BinaryFormatter();
+                        this.ConfigEntity = formatter.Deserialize(stream);
+                    }
                 }
             }
             catch (Exception e)
@@ -75,6 +110,7 @@ namespace Strawhat.Games.Utilities
                     filePath, Environment.NewLine, e.ToString()));
                 //throw e;
             }
+
             return (T)this.ConfigEntity;
         }
     }
@@ -83,7 +119,24 @@ namespace Strawhat.Games.Utilities
     {
         public T ConfigEntity { set; get; }
 
-        private GameConfigFile configFile = new GameConfigFile();
+        private bool _IsBinarySerialization;
+
+        private GameConfigFile configFile;
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="isBinarySerialization">Set to false to use XML serialization</param>
+        public GameConfigFile(bool isBinarySerialization)
+        {
+            this._IsBinarySerialization = isBinarySerialization;
+            this.configFile = new GameConfigFile(this._IsBinarySerialization);
+        }
+
+        /// <summary>
+        /// Use binary serialization by default. Use another override to use XML serialization.
+        /// </summary>
+        public GameConfigFile() : this(true) { }
 
         public void SaveToFile(string filePath)
         {
@@ -93,7 +146,8 @@ namespace Strawhat.Games.Utilities
 
         public T ReadFromFile(string filePath)
         {
-            return configFile.ReadFromFile<T>(filePath);
+            this.ConfigEntity = configFile.ReadFromFile<T>(filePath);
+            return this.ConfigEntity;
         }
     }
 }

@@ -63,4 +63,61 @@ namespace Strawhat.Games._2DGame
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
     }
+
+    [XmlRoot]
+    public struct Vector2D<T> : INotifyPropertyChanged
+    {
+        private T _X;
+
+        [XmlElement]
+        public T X { set { if (!_X.Equals(value)) { _X = value; this.OnPropertyChanged("X"); } } get { return _X; } }
+
+        private T _Y;
+
+        [XmlElement]
+        public T Y { set { if (!_Y.Equals(value)) { _Y = value; this.OnPropertyChanged("Y"); } } get { return _Y; } }
+
+        public Vector2D(T x, T y)
+        {
+            _X = x;
+            _Y = y;
+            PropertyChanged = null;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj.GetType() != typeof(Vector2D<T>))
+                return false;
+
+            var other = (Vector2D<T>)obj;
+
+            if (X.Equals(other.X) && Y.Equals(other.Y))
+                return true;
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public static bool operator ==(Vector2D<T> v1, Vector2D<T> v2)
+        {
+            if (v1.Equals(v2))
+                return true;
+            return false;
+        }
+
+        public static bool operator !=(Vector2D<T> v1, Vector2D<T> v2)
+        {
+            return !(v1 == v2);
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged(string propertyName)
+        {
+            if (this.PropertyChanged != null)
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
+    }
 }

@@ -385,6 +385,15 @@ namespace Strawhat.Games._2DModelEditor
             }
         }
 
+        public RelayCommand OptionsCommand
+        {
+            get
+            {
+                return new RelayCommand(param => this.Options());
+            }
+        }
+
+
         public event Action NewFileCommandExecuted;
         public event Action OpenFileCommandExecuted;
         public event Action CloseFileCommandExecuted;
@@ -400,6 +409,7 @@ namespace Strawhat.Games._2DModelEditor
         public event Action DeleteCommandExecuted;
         public event Action SelectAllCommandExecuted;
         public event Action ModelPreviewCommandExecuted;
+        public event Action OptionsCommandExecuted;
 
         private void OnCommandExecuted(Action command)
         {
@@ -481,6 +491,11 @@ namespace Strawhat.Games._2DModelEditor
         public void ModelPreview()
         {
             OnCommandExecuted(this.ModelPreviewCommandExecuted);
+        }
+
+        public void Options()
+        {
+            OnCommandExecuted(this.OptionsCommandExecuted);
         }
         #endregion
 
@@ -572,7 +587,6 @@ namespace Strawhat.Games._2DModelEditor
 
         internal void SaveModels(IEnumerable<_2DGameModel> models)
         {
-
         }
 
         public void AddModel(_2DGameModel model, string filePath = "")
