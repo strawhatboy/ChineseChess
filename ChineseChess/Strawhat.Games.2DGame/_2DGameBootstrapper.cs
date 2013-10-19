@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Strawhat.Games.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace Strawhat.Games._2DGame
 {
+    [Singleton]
     public class _2DGameBootstrapper
     {
         //public Queue<_I2DGameScene> QueuedScene { private set; get; }
@@ -28,5 +30,15 @@ namespace Strawhat.Games._2DGame
         //}
 
         public _I2DGameScene CurrentScene { private set; get; }
+
+        public event Action<_I2DGameScene> CurrentSceneChanged;
+
+        public void OnCurrentSceneChange(_I2DGameScene scene)
+        {
+            if (this.CurrentSceneChanged != null)
+            {
+                this.CurrentSceneChanged(scene);
+            }
+        }
     }
 }

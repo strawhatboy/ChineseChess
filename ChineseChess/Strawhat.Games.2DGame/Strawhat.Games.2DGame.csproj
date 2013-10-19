@@ -60,6 +60,7 @@
     <Compile Include="2DGameResourceManager.cs" />
     <Compile Include="2DGameScene.cs" />
     <Compile Include="2DGameSettings.cs" />
+    <Compile Include="2DGameStage.cs" />
     <Compile Include="2DGameTextureHelper.cs" />
     <Compile Include="2DGameTimer.cs" />
     <Compile Include="2DSprite.xaml.cs">
